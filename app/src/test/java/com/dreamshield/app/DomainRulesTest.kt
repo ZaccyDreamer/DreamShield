@@ -29,7 +29,7 @@ class DomainRulesTest {
         val feed = DomainRules.parseFilter("""
             ||ads.example^
             @@||safe.ads.example^
-            ||conditional.example^$dnstype=AAAA
+            ||conditional.example^${'$'}dnstype=AAAA
         """.trimIndent())
         val rules = DomainRules(feed.blocked, feed.allowed, emptySet())
         assertTrue(rules.isBlocked("ads.example"))
