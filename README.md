@@ -34,7 +34,7 @@ gradle assembleDebug
 
 The phone environment used to start this project reports Android 15/API 35, but has no Java/JDK, Gradle, Kotlin compiler, Android SDK, or `adb` installed. `.github/workflows/android.yml` runs unit tests, builds a debug APK, and uploads it as an artifact on GitHub Actions. The latest verified run passed the unit tests and APK build for commit `b7c913cf409bbbf35183e4fde9b4634376b30cbd`. Device-level VPN behavior and runtime tests are still outstanding.
 
-Unit tests cover rule parsing/matching, NXDOMAIN construction, IPv4 UDP endpoint swapping, and checksums. TUN integration, live DNS, Android permission prompts, Xiaomi background survival, Phoenix Browser, and YouTube app behavior need on-device testing with the built APK. No successful Android build or runtime test is claimed yet.
+Unit tests cover rule parsing/matching, NXDOMAIN construction, IPv4 UDP endpoint swapping, and checksums. TUN integration, live DNS, Android permission prompts, Xiaomi background survival, Phoenix Browser, and YouTube app behavior need on-device testing with the built APK. The hosted build verifies compilation and unit tests only; it does not verify VPN runtime behavior.
 
 ## Install and device test
 
