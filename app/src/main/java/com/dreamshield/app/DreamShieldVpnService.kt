@@ -125,7 +125,7 @@ class DreamShieldVpnService : VpnService() {
         for (resolver in UPSTREAMS) {
             try { return forwardDns(resolver, dns) } catch (e: Exception) { failure = e }
         }
-        throw failure ?: IOException("No DNS upstream is configured")
+        throw (failure ?: IOException("No DNS upstream is configured"))
     }
 
     private fun forwardDns(resolverHost: String, dns: ByteArray): ByteArray {
@@ -180,12 +180,13 @@ class DreamShieldVpnService : VpnService() {
         prefs.edit().putString(KEY_LOG, ("${System.currentTimeMillis()}|$message\n$previous").lineSequence().take(40).joinToString("\n")).apply()
     }
 
+    @Suppress("DEPRECATION")
     private fun notification(): Notification {
         val open = PendingIntent.getActivity(this, 0, Intent(this, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         return if (Build.VERSION.SDK_INT >= 26) Notification.Builder(this, CHANNEL)
             .setSmallIcon(android.R.drawable.ic_lock_lock).setContentTitle("DreamShield is active")
             .setContentText("Filtering DNS ads and trackers on this device").setContentIntent(open).setOngoing(true).build()
-        else @Suppress("DEPRECATION") Notification.Builder(this).setSmallIcon(android.R.drawable.ic_lock_lock)
+        else Notification.Builder(this).setSmallIcon(android.R.drawable.ic_lock_lock)
             .setContentTitle("DreamShield is active").setContentText("Filtering DNS ads and trackers")
             .setContentIntent(open).setOngoing(true).build()
     }
