@@ -32,7 +32,7 @@ gradle testDebugUnitTest
 gradle assembleDebug
 ```
 
-The phone environment used to start this project reports Android 15/API 35, but has no Java/JDK, Gradle, Kotlin compiler, Android SDK, or `adb` installed. `.github/workflows/android.yml` runs unit tests, builds a debug APK, and uploads it as an artifact on GitHub Actions. A repository remote must be configured before that hosted build can run.
+The phone environment used to start this project reports Android 15/API 35, but has no Java/JDK, Gradle, Kotlin compiler, Android SDK, or `adb` installed. `.github/workflows/android.yml` runs unit tests, builds a debug APK, and uploads it as an artifact on GitHub Actions. The latest verified run passed the unit tests and APK build for commit `b7c913cf409bbbf35183e4fde9b4634376b30cbd`. Device-level VPN behavior and runtime tests are still outstanding.
 
 Unit tests cover rule parsing/matching, NXDOMAIN construction, IPv4 UDP endpoint swapping, and checksums. TUN integration, live DNS, Android permission prompts, Xiaomi background survival, Phoenix Browser, and YouTube app behavior need on-device testing with the built APK. No successful Android build or runtime test is claimed yet.
 
@@ -55,4 +55,4 @@ DNS filtering blocks hostnames, not page elements. It cannot selectively remove 
 
 ## Git status
 
-This is a standalone project directory. The parent home folder is an unrelated uninitialized Git worktree and has no DreamShield remote configured. No remote repository was created or selected automatically. After placing this directory in a configured repository, the included Actions workflow can build the APK and run the tests.
+This standalone project is pushed to the private [ZaccyDreamer/DreamShield repository](https://github.com/ZaccyDreamer/DreamShield), on branch `main`. The DreamShield working tree is tracked in its own repository under `Projects/DreamShield`; the parent home folder is a separate, unrelated worktree.
